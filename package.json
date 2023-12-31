@@ -10,7 +10,8 @@
     "initialize": "pnpm recursive run initialize",
     "mud:up": "pnpm recursive exec mud set-version -v canary && pnpm install",
     "prepare": "(forge --version || pnpm foundry:up)",
-    "test": "pnpm recursive run test"
+    "test": "pnpm recursive run test",
+    "fix-sol": "cd packages/contracts && prettier --write --plugin=prettier-plugin-solidity ."
   },
   "devDependencies": {
     "@latticexyz/cli": "2.0.0-alpha.1.177",
