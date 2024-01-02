@@ -1,14 +1,13 @@
-import { Has, HasValue, getComponentValue, runQuery } from "@latticexyz/recs";
-import { uuid, awaitStreamValue } from "@latticexyz/utils";
-import { MonsterCatchResult } from "../monsterCatchResult";
+import { getComponentValue } from "@latticexyz/recs";
 import { ClientComponents } from "./createClientComponents";
 import { SetupNetworkResult } from "./setupNetwork";
+import { singletonEntity } from "@latticexyz/store-sync/recs";
 
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-  { singletonEntity, playerEntity, worldSend, txReduced$ }: SetupNetworkResult,
-  components: ClientComponents
+  { worldContract, waitForTransaction }: SetupNetworkResult,
+  { SyncProgress }: ClientComponents
 ) {
   const moveTo = async (x: number, y: number) => {
     // TODO
